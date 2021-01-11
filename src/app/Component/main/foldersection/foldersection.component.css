@@ -1,0 +1,19 @@
+.wrap{
+    display: flex;
+    align-items:flex-start;
+    flex-wrap:wrap;
+}
+
+.folder{
+    width:100px;
+    height:100px;
+    padding: 20px;
+    margin: 10px;
+
+}
+
+.folder a{
+    text-decoration: none;
+}
+
+

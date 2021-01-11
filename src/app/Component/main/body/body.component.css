@@ -1,0 +1,17 @@
+.breadcrumb{
+    
+    border: 1px solid;
+    border-radius: 0 20px;
+}
+
+.breadcrumb-item a{
+    text-decoration: none;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.border{
+    background-color: rgba(237, 247, 255, 0.925);;
+    border: 1px solid;
+    box-shadow: 0px 0px 10px -0.5px;
+}

@@ -1,0 +1,20 @@
+nav{
+    box-shadow:0px 0px 10px 5px #888888;
+}
+nav a{
+    
+    color: white;
+    cursor: pointer;
+}
+
+.nav-item a:hover {
+    color:#888888;
+}
+.nav-item a{
+    font-size: 13px;
+}
+
+.nav-item{
+    padding-left:20px;
+}
+
