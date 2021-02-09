@@ -1,12 +1,12 @@
 <div class="py-4">
-    <form method="post" action="#" id="#">
+    <form method="post">
     
         <div class="form-group files">
           <input type="file" class="form-control" multiple (change)="selectFiles($event)">
         </div>
         <button
         class="btn btn-success btn-sm"
-        [disabled]="!selectedFiles"
+        
       (click)="uploadFiles()">
         Upload
       </button>
@@ -14,9 +14,9 @@
     </form>
 </div>
 
-<div *ngFor="let progressInfo of progressInfos" class="folder mb-2">
+<div *ngFor="let file of files" class="folder mb-2">
     <i class="fa fa-file size text-primary"></i>
-    <span>{{ progressInfo.fileName }}</span>
+    <span>{{ files.originalname }}</span>
     <!-- <div class="progress">
       <div
         class="progress-bar progress-bar-info progress-bar-striped"

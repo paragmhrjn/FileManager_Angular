@@ -1,106 +1,112 @@
-<div class="row py-4 border">
-        
-  <div class="col-4" style="border-right: 0.5px solid grey; ">
-          <app-search></app-search>
-          <hr>
-          
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                   
-                  
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder 
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder 
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                   
-                  
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder 
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
-                    
-                    Folder 
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-file text-primary" style="padding-right:10px"></i>
-                    
-                    File
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                   
-                  
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-file text-primary" style="padding-right:10px"></i>
-                    
-                    File
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-file text-primary" style="padding-right:10px"></i>
-                    
-                    File
-                    
-                    <i class="fa fa-trash float-right text-danger"></i>
-                  </a>
-                </li>
-                
-              </ul>
-              <hr>
-        </div>
+<div class="container">
+  <div class="row py-4 border">
 
-        <div class="col-8">
-          <app-breadcrumb></app-breadcrumb>
+    <div class="col-4" style="border-right: 0.5px solid grey; ">
+            <app-search></app-search>
+            <hr>
+            <a class="btn btn-success" (click)=onShowPopup()>
+              <i class="fa fa-plus-circle"></i> {{newdir}}
+              </a>
 
-          <app-foldersection></app-foldersection>
-        </div>
+              <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
 
-    </div>
+                      {{popupMessage}}
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+
+
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
+
+                      Folder
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
+
+                      Folder
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
+
+                      Folder
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+
+
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
+
+                      Folder
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
+
+                      Folder
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-file text-primary" style="padding-right:10px"></i>
+
+                      File
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+
+
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-file text-primary" style="padding-right:10px"></i>
+
+                      File
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="fa fa-file text-primary" style="padding-right:10px"></i>
+
+                      File
+
+                      <i class="fa fa-trash float-right text-danger"></i>
+                    </a>
+                  </li>
+
+                </ul>
+                <hr>
+          </div>
+
+          <div class="col-8">
+            <app-breadcrumb></app-breadcrumb>
+
+            <app-foldersection></app-foldersection>
+          </div>
+
+      </div>
+</div>
+

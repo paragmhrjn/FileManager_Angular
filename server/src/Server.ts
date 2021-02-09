@@ -1,23 +1,35 @@
 import express from 'express';
-
+import http from "http";
+import * as bodyParser from "body-parser";
+import { FileController, upload } from './controller/FileController';
 const app = express();
+const httpServer = http.createServer(app);
+const router = express.Router();
+const cors = require("cors");
 
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin','*');
-  res.header('Access-Control-Allow-Header', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
-  if('OPTIONS' === req.method) {
-      res.sendStatus(200);
-  } else {
-      console.log(`${req.ip} ${req.method} ${req.url}`);
-      next();
-  }
-});
-// Handle POST requests that come in formatted as JSON
-app.use(express.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
-app.get('/', (req, res ) => {
-  res.send("Hello World");
-});
-app.listen(3000, '127.0.0.1', () => console.log('Server Running!!!'));
+app.use("/",router);
+
+router.get("/Files", async (req,res) => {await new FileController().ReadFile(req, res); });
+router.post("/Files", async (req,res) => { await new FileController().CreateFile(req, res); });
+router.put("/Files/Rename", async (req,res) => { await new FileController().RenameFile(req, res); });
+router.put("/Files", async (req,res) => {await new FileController().AppendFile(req, res); });
+router.delete("/Files", async (req,res) => {await new FileController().DeleteFile(req, res);  });
+router.copy("/Files", async (req,res) => {await new FileController().MoveFile(req, res); });
+router.post("/Files/Upload", upload.single("file"), cors(), (req, res) => { new FileController().UploadFile(req, res); });
+
+
+
+
+// // Handle POST requests that come in formatted as JSON
+// app.use(express.json())
+
+// app.get('/', (req, res ) => {
+//   res.send("Hello World");
+// });
+
+
+httpServer.listen(3000, '127.0.0.1', () => console.log('Server Running!!!'));

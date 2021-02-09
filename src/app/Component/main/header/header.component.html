@@ -1,40 +1,36 @@
 <header>
-    <nav class="navbar navbar-expand-sm bg-dark">
+    <nav class="navbar navbar-expand-sm bg-dark" *ngIf="isLoggedIn$ | async as isLoggedIn">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" routerLink="/"><i class="fa fa-home size"></i>{{title}}</a>
             </div>
-                
-            
+
+
           <ul class="navbar-nav float-right">
             <li class="nav-item">
-                    <a class="nav-link" (click)=onShowPopup()>
-                    <i class="fa fa-plus-circle"></i> {{newdir}}
-                    </a> 
+                    
             </li>
             <li class="nav-item">
                 <a class="nav-link"  (click) = ontoggleDisplay()>
                 <i class="fa fa-upload"> </i> {{upload}}
-                </a> 
-            </li>
-            <li class="nav-item">
-                <button class="btn btn-primary " routerLink="/login">Login</button>
+                </a>
             </li>
             <!-- <li class="nav-item">
-                <button class="btn btn-primary ">LogOut</button>
+                <button class="btn btn-primary " routerLink="/login">Login</button>
             </li> -->
-            
-            </ul> 
+            <li class="nav-item">
+                <button class="btn btn-primary " (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>
+            </li>
+
+            </ul>
         </div>
-        
-        
+
+
     </nav>
-    
+
 </header>
 
 <div class="container py-4">
-    <b><h1>{{popupMessage}}</h1> </b>
+    
    <app-upload *ngIf = "!isShow"></app-upload>
-        
-    <router-outlet></router-outlet>
 </div>

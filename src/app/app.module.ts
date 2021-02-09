@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SimpleModalModule } from 'ngx-simple-modal';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Component/main/header/header.component';
@@ -15,6 +15,8 @@ import { RegisterComponent } from './Component/register';
 import { appRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { uploadFileComponent } from './Component/main/uploadFile/uploadFile.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,14 @@ import { uploadFileComponent } from './Component/main/uploadFile/uploadFile.comp
     FormsModule,
     appRoutingModule,
     SimpleModalModule.forRoot({container: "modal-container"}),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   entryComponents: [
     PopupComponent
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

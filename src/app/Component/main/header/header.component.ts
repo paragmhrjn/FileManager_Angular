@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SimpleModalService } from 'ngx-simple-modal';
-import {PopupComponent} from '../../main/foldersection/popup/popup.component';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,30 +9,21 @@ import {PopupComponent} from '../../main/foldersection/popup/popup.component';
 })
 export class HeaderComponent implements OnInit {
   title = 'File Manager';
-  newdir = 'New Directory';
   upload = 'Upload file';
-  confirmResult = null;
-  popupMessage = '';
   isShow = true;
-  
-  constructor(private SimpleModalService: SimpleModalService) {}
-  ngOnInit(): void {
-  }
+  isLoggedIn$: Observable<boolean>;
 
-  onShowPopup() {
-    this.SimpleModalService.addModal(PopupComponent, {
-      title: 'Create Folder',
-      createfolder: 'Name: '})
-      .subscribe((message) => {
-        // We get modal result
-        this.popupMessage = message;
-        console.log(this.popupMessage);
-      });
-      
+  constructor(private authService: AuthService) {}
+  ngOnInit(): void {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 
   ontoggleDisplay(){
     this.isShow = !this.isShow;
     console.log(this.isShow);
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }
