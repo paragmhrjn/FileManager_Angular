@@ -12,9 +12,9 @@ import { SimpleModalService } from 'ngx-simple-modal';
   newdir = 'New Directory';
   confirmResult = null;
   popupMessage = '';
-  list: any[] = [];
-  
-  
+  lists: string[] = ["Class", "Note"];
+
+
   constructor(private SimpleModalService: SimpleModalService){}
   onShowPopup() {
     this.SimpleModalService.addModal(PopupComponent, {
@@ -24,9 +24,14 @@ import { SimpleModalService } from 'ngx-simple-modal';
         // We get modal result
         this.popupMessage = message;
         console.log(this.popupMessage);
+        this.lists.push(this.popupMessage);
       });
+
+
 
   }
 
- 
+  onRemove(){
+    this.popupMessage = '';
+  }
  }

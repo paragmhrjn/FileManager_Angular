@@ -9,18 +9,18 @@
               </a>
 
               <ul class="nav flex-column">
-                  <li class="nav-item">
+                  <li class="nav-item" *ngFor="let list of lists">
                     <a class="nav-link" href="#">
                       <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
 
-                      {{popupMessage}}
+                      {{list}}
 
-                      <i class="fa fa-trash float-right text-danger"></i>
+                      <i class="fa fa-trash float-right text-danger" (click)="onRemove()"></i>
                     </a>
 
 
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <i class="fa fa-folder text-primary" style="padding-right:10px"></i>
 
@@ -95,7 +95,7 @@
 
                       <i class="fa fa-trash float-right text-danger"></i>
                     </a>
-                  </li>
+                  </li> -->
 
                 </ul>
                 <hr>

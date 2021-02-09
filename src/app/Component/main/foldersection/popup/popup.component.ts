@@ -27,7 +27,8 @@ export interface PopupModel {
 export class PopupComponent extends SimpleModalComponent<PopupModel, string> implements PopupModel {
   title: string;
   createfolder: string;
-  message: string = '';
+  message = '';
+
 
   @Output() messageEvent = new EventEmitter<string>();
   constructor() {
@@ -40,7 +41,7 @@ export class PopupComponent extends SimpleModalComponent<PopupModel, string> imp
     this.messageEvent.emit(this.message)
   }
 
-  
 
-  
+
+
 }

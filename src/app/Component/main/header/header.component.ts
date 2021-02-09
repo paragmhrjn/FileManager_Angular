@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HeaderComponent implements OnInit {
   title = 'File Manager';
   upload = 'Upload file';
-  isShow = true;
   isLoggedIn$: Observable<boolean>;
 
   constructor(private authService: AuthService) {}
@@ -18,10 +17,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 
-  ontoggleDisplay(){
-    this.isShow = !this.isShow;
-    console.log(this.isShow);
-  }
+
 
   onLogout() {
     this.authService.logout();
