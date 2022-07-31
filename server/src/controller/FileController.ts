@@ -1,6 +1,6 @@
 import { DirectoryPath, NewDirectoryPath } from "../AppConfig";
 import * as path from "path";
-import * as fs from "fs";
+const fs = require ("fs");
 
 const multer = require("multer");
 
@@ -8,12 +8,12 @@ var storage = multer.diskStorage({
   destination: async function (req, file, cb)
   {
       let dir = DirectoryPath;
-          
-      if (!fs.existsSync(dir)) 
+
+      if (!fs.existsSync(dir))
       {
           fs.mkdirSync(dir, { recursive: true })
       }
-      
+
       try
       {
           cb(null, dir);
@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
       {
           cb(null, dir);
       }
-  
+
   },
   filename: function (req, file, cb)
   {
@@ -102,7 +102,7 @@ export class FileController {
       console.error("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
       res.status(500).send("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
     }
-  
+
   }
 
   // async method to append file
@@ -113,7 +113,7 @@ export class FileController {
       let data: string =req.body.Data;
       let directoryPath: string = DirectoryPath;
       let fileFullName: string = path.join(directoryPath, fileName);
-      
+
 
 
       if(fs.existsSync(fileFullName)){
@@ -130,7 +130,7 @@ export class FileController {
       console.error("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
       res.status(500).send("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
     }
-  
+
   }
 
 
@@ -141,7 +141,7 @@ export class FileController {
       let fileName: string = req.query.FileName;
       let directoryPath: string = DirectoryPath;
       let fileFullName: string = path.join(directoryPath, fileName);
-      
+
 
 
       if(fs.existsSync(fileFullName)){
@@ -158,26 +158,19 @@ export class FileController {
       console.error("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
       res.status(500).send("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
     }
-  
+
   }
  // async method to delete file
  async DeleteFile(req, res){
   try {
 
-  
-    let directoryPath: string =  DirectoryPath;
-    
-    
 
+    let directoryPath: string = req.query.DirectoryPath ? req.query.DirectoryPath : DirectoryPath;
 
     if(fs.existsSync(directoryPath)){
 
-     
         fs.rmdirSync(directoryPath, {recursive: true});
-
         res.status(200).send("file Deleted successfully");
-     
-
 
     }else{
       res.status(404).send("File not Found!!");
@@ -198,7 +191,7 @@ export class FileController {
       let newDirectoryPath: string = NewDirectoryPath;
       let oldFileFullName: string = path.join(oldDirectoryPath, fileName);
       let newFileFullName: string = path.join(newDirectoryPath, fileName);
-      
+
 
 
       if(fs.existsSync(oldFileFullName)){
@@ -212,17 +205,17 @@ export class FileController {
         }else{
           res.status(500).send("Directory not created!!");
         }
-        
+
 
       }else{
-        res.status(404).send("File not Found!!");
+        res.status(500).send("File not Found!!");
       }
     }
     catch(ex) {
       console.error("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
       res.status(500).send("Message:" + ex.message + ":: stacktrack : " + ex.stacktrace);
     }
-  
+
   }
 
   async UploadFile(req, res) {
@@ -236,8 +229,8 @@ export class FileController {
     }
     else {
         res.status(500).send("File not uploaded!");
-    }        
+    }
 }
 
- 
+
 }

@@ -13,6 +13,8 @@ import {HttpClient} from '@angular/common/http';
     selectedFiles?: FileList;
     files: any[] = [];
     isShow = true;
+
+    // 
     ontoggleDisplay(){
       this.isShow = !this.isShow;
       console.log(this.isShow);

@@ -17,7 +17,7 @@ router.get("/Files", async (req,res) => {await new FileController().ReadFile(req
 router.post("/Files", async (req,res) => { await new FileController().CreateFile(req, res); });
 router.put("/Files/Rename", async (req,res) => { await new FileController().RenameFile(req, res); });
 router.put("/Files", async (req,res) => {await new FileController().AppendFile(req, res); });
-router.delete("/Files", async (req,res) => {await new FileController().DeleteFile(req, res);  });
+router.delete("/Files/Delete", async (req,res) => {await new FileController().DeleteFile(req, res);  });
 router.copy("/Files", async (req,res) => {await new FileController().MoveFile(req, res); });
 router.post("/Files/Upload", upload.single("file"), cors(), (req, res) => { new FileController().UploadFile(req, res); });
 
